@@ -314,7 +314,7 @@ CREATE INDEX idx_cart_item_cart_id ON cart_item(cart_id);
 CREATE INDEX idx_audit_log_entity ON audit_log(entity_type, entity_id);
 CREATE INDEX idx_audit_log_created_at ON audit_log(created_at);
 
-Trigger function for updated_at
+-- Trigger function for updated_at
 CREATE OR REPLACE FUNCTION update_updated_at_column()
 RETURNS TRIGGER AS $$
 BEGIN
