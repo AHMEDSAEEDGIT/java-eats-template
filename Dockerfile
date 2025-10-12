@@ -2,6 +2,12 @@ FROM openjdk:17-jdk-slim
 
 WORKDIR /app
 
-COPY src/javaeats/target/javaeats.jar app.jar
+COPY src/javaeats/pom.xml .
 
-ENTRYPOINT ["java", "-jar", "app.jar"]
+RUN apt-get update && apt-get install -y maven && mvn dependency:go-offline
+
+COPY src ./src
+
+WORKDIR /app/src/javaeats
+
+CMD ["mvn", "spring-boot:run"]
